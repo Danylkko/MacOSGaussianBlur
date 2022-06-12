@@ -11,7 +11,24 @@
 		978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0C52854F709003F0FA6 /* ViewController.swift */; };
 		978AF0C82854F70B003F0FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 978AF0C72854F70B003F0FA6 /* Assets.xcassets */; };
 		978AF0CB2854F70C003F0FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 978AF0C92854F70C003F0FA6 /* Main.storyboard */; };
+		978AF0D42854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */; };
+		978AF0D52854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		978AF0D62854F7DB003F0FA6 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				978AF0D52854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		978AF0C02854F709003F0FA6 /* MacOSGaussianBlur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacOSGaussianBlur.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +37,10 @@
 		978AF0C72854F70B003F0FA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		978AF0CA2854F70C003F0FA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		978AF0CC2854F70C003F0FA6 /* MacOSGaussianBlur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacOSGaussianBlur.entitlements; sourceTree = "<group>"; };
+		978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGaussianBlur_d.dylib; path = task_9/build/lib/libGaussianBlur_d.dylib; sourceTree = "<group>"; };
+		978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacOSGaussianBlur-Bridging-Header.h"; sourceTree = "<group>"; };
+		978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaussianWrapper.h; sourceTree = "<group>"; };
+		978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GaussianWrapper.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				978AF0D42854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +60,7 @@
 			children = (
 				978AF0C22854F709003F0FA6 /* MacOSGaussianBlur */,
 				978AF0C12854F709003F0FA6 /* Products */,
+				978AF0D22854F7DB003F0FA6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,8 +80,19 @@
 				978AF0C72854F70B003F0FA6 /* Assets.xcassets */,
 				978AF0C92854F70C003F0FA6 /* Main.storyboard */,
 				978AF0CC2854F70C003F0FA6 /* MacOSGaussianBlur.entitlements */,
+				978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */,
+				978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */,
+				978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */,
 			);
 			path = MacOSGaussianBlur;
+			sourceTree = "<group>";
+		};
+		978AF0D22854F7DB003F0FA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +105,7 @@
 				978AF0BC2854F709003F0FA6 /* Sources */,
 				978AF0BD2854F709003F0FA6 /* Frameworks */,
 				978AF0BE2854F709003F0FA6 /* Resources */,
+				978AF0D62854F7DB003F0FA6 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -93,6 +128,7 @@
 				TargetAttributes = {
 					978AF0BF2854F709003F0FA6 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -133,6 +169,7 @@
 			files = (
 				978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */,
 				978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */,
+				978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,11 +305,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MacOSGaussianBlur/MacOSGaussianBlur.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/task_9/src";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -280,10 +319,16 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/task_9/build/lib",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.edu.ukma.litvinchuk.MacOSGaussianBlur;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MacOSGaussianBlur/MacOSGaussianBlur-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -293,11 +338,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MacOSGaussianBlur/MacOSGaussianBlur.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/task_9/src";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -305,10 +352,15 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/task_9/build/lib",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.edu.ukma.litvinchuk.MacOSGaussianBlur;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MacOSGaussianBlur/MacOSGaussianBlur-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
