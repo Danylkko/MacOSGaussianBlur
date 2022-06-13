@@ -14,6 +14,7 @@
 		978AF0D42854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */; };
 		978AF0D52854F7DB003F0FA6 /* libGaussianBlur_d.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */; };
+		97FDCF4C285623A700BAD9A7 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacOSGaussianBlur-Bridging-Header.h"; sourceTree = "<group>"; };
 		978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaussianWrapper.h; sourceTree = "<group>"; };
 		978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GaussianWrapper.mm; sourceTree = "<group>"; };
+		97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +77,14 @@
 		978AF0C22854F709003F0FA6 /* MacOSGaussianBlur */ = {
 			isa = PBXGroup;
 			children = (
+				97FDCF4A2856090900BAD9A7 /* ExternalLibWrapper */,
 				978AF0C32854F709003F0FA6 /* AppDelegate.swift */,
+				978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */,
 				978AF0C52854F709003F0FA6 /* ViewController.swift */,
 				978AF0C72854F70B003F0FA6 /* Assets.xcassets */,
 				978AF0C92854F70C003F0FA6 /* Main.storyboard */,
 				978AF0CC2854F70C003F0FA6 /* MacOSGaussianBlur.entitlements */,
-				978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */,
-				978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */,
-				978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */,
+				97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */,
 			);
 			path = MacOSGaussianBlur;
 			sourceTree = "<group>";
@@ -93,6 +95,15 @@
 				978AF0D32854F7DB003F0FA6 /* libGaussianBlur_d.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97FDCF4A2856090900BAD9A7 /* ExternalLibWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */,
+				978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */,
+			);
+			path = ExternalLibWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 			files = (
 				978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */,
 				978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */,
+				97FDCF4C285623A700BAD9A7 /* MyCustomCell.swift in Sources */,
 				978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
