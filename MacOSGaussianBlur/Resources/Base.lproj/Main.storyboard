@@ -705,12 +705,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MacOSGaussianBlur" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
                                 <rect key="frame" x="13" y="223" width="87" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -719,24 +719,15 @@
                                     <action selector="openImage:" target="XfG-lQ-9wD" id="jth-Ot-Cwl"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gDh-cv-f61">
-                                <rect key="frame" x="90" y="48" width="300" height="175"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gDh-cv-f61" secondAttribute="height" multiplier="12:7" id="ljN-J7-kVl"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nGn-kf-LTV"/>
-                            </imageView>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-XM-2x3">
-                                <rect key="frame" x="18" y="14" width="444" height="28"/>
+                                <rect key="frame" x="18" y="17" width="444" height="28"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="Q8W-vy-pTT"/>
                                 <connections>
-                                    <action selector="changePhotoBlur:" target="XfG-lQ-9wD" id="zga-K8-VvQ"/>
+                                    <action selector="changePhotoBlur:" target="XfG-lQ-9wD" id="GZt-Hd-B0w"/>
                                 </connections>
                             </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
                                 <rect key="frame" x="417" y="223" width="45" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -746,26 +737,31 @@
                                 </connections>
                             </button>
                             <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zdb-yT-yjx">
-                                <rect key="frame" x="224" y="113" width="32" height="32"/>
+                                <rect key="frame" x="224" y="121" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDh-cv-f61">
+                                <rect key="frame" x="90" y="54" width="300" height="162"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nGn-kf-LTV"/>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="3LA-XM-2x3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="3oK-T2-frp"/>
-                            <constraint firstItem="gDh-cv-f61" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.625" id="8zw-se-g6I"/>
-                            <constraint firstItem="iKT-x0-Q77" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="AS8-8g-vrL"/>
-                            <constraint firstAttribute="bottom" secondItem="3LA-XM-2x3" secondAttribute="bottom" constant="20" symbolic="YES" id="DKS-KT-r5C"/>
-                            <constraint firstItem="gDh-cv-f61" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="bN3-nI-PO5"/>
-                            <constraint firstItem="iKT-x0-Q77" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="eEe-5F-qOo"/>
-                            <constraint firstAttribute="trailing" secondItem="3LA-XM-2x3" secondAttribute="trailing" constant="20" symbolic="YES" id="sEH-Kh-ouf"/>
-                            <constraint firstItem="gDh-cv-f61" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.648148" id="uGu-JM-3iO"/>
-                            <constraint firstItem="gDh-cv-f61" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="wmO-2j-W3Q"/>
+                            <constraint firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="16:9" id="1Vd-Pb-bmA"/>
+                            <constraint firstItem="gDh-cv-f61" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="2dG-kB-PdD"/>
+                            <constraint firstItem="3Yy-Jb-EdM" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="8PH-P9-YXl"/>
+                            <constraint firstItem="gDh-cv-f61" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="PkQ-oz-BiB"/>
+                            <constraint firstAttribute="bottom" secondItem="3LA-XM-2x3" secondAttribute="bottom" constant="23" id="cfN-QP-Epv"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="270" id="dKB-kk-SDa"/>
+                            <constraint firstItem="gDh-cv-f61" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.625" id="f20-tr-CYs"/>
+                            <constraint firstAttribute="trailing" secondItem="3LA-XM-2x3" secondAttribute="trailing" constant="20" symbolic="YES" id="ovM-UF-pd6"/>
+                            <constraint firstAttribute="trailing" secondItem="3Yy-Jb-EdM" secondAttribute="trailing" constant="25" id="ya8-N8-hG1"/>
+                            <constraint firstItem="gDh-cv-f61" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.6" id="z2V-2d-Xxq"/>
+                            <constraint firstItem="3LA-XM-2x3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="zqf-tD-Pp1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="blurLevelSlider" destination="3LA-XM-2x3" id="NIF-qq-bB2"/>
-                        <outlet property="imageLoadingSpinner" destination="zdb-yT-yjx" id="ZEA-0e-ga2"/>
-                        <outlet property="imageView" destination="gDh-cv-f61" id="rfS-2Y-41L"/>
+                        <outlet property="blurLevelSlider" destination="3LA-XM-2x3" id="XgD-wX-zU9"/>
+                        <outlet property="imageView" destination="gDh-cv-f61" id="DLm-nh-Wkx"/>
                         <outlet property="openButton" destination="iKT-x0-Q77" id="hgx-bZ-BrQ"/>
                         <outlet property="progressIndicator" destination="zdb-yT-yjx" id="HcZ-41-3Ou"/>
                         <outlet property="saveButton" destination="3Yy-Jb-EdM" id="ENV-sB-2JC"/>
@@ -773,7 +769,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="654.5"/>
         </scene>
     </scenes>
     <resources>

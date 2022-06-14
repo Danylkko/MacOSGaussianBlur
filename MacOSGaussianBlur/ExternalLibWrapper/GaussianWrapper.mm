@@ -42,7 +42,7 @@
                                 pixelsHigh:_gcb->blurredMatRows()
                                 bitsPerSample:8
                                 samplesPerPixel:GaussianCurveBlur::channels
-                                hasAlpha:YES
+                                hasAlpha:NO
                                 isPlanar:NO
                                 colorSpaceName:NSDeviceRGBColorSpace
                                 bytesPerRow:bytesPerRow
