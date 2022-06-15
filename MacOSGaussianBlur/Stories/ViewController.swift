@@ -33,8 +33,8 @@ class ViewController: NSViewController {
     //MARK: - Delegate methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gauss = GaussianWrapper()
         self.view.wantsLayer = true
+        self.gauss = GaussianWrapper()
         self.imageView.wantsLayer = true
         setupUI()
         bindUI()
@@ -63,7 +63,7 @@ class ViewController: NSViewController {
         savePanel.title = "Choose destination"
         
         if savePanel.runModal() == .OK, let url = savePanel.url {
-            guard let tiffRep = self.imageView.image?.tiffRepresentation,
+            guard let tiffRep = (self.imageView.layer?.contents as? NSImage)?.tiffRepresentation,
                   let bitmapImage = NSBitmapImageRep(data: tiffRep) else { return }
             let pngData = bitmapImage.representation(using: .png, properties: [:])
             do {
@@ -120,15 +120,10 @@ class ViewController: NSViewController {
         blurOperation.onImageProcced = { [weak self] image in
             self!.setViewContent(for: self!.imageView, with: image)
         }
-        
-        //        guard let prevOperation = self.prevOperation, !prevOperation.isCancelled else {
-        //            self.prevOperation = blurOperation
-        //            return
-        //        }
 
         if let prevOperation = self.prevOperation, !prevOperation.isCancelled {
             self.prevOperation = blurOperation
-            guard blurOperation.blurValue != prevOperation.blurValue else {
+            if blurOperation.blurValue == prevOperation.blurValue {
                 return
             }
         }
@@ -138,6 +133,7 @@ class ViewController: NSViewController {
         self.blurringOperations.addOperation(blurOperation)
         
         self.enableSpinner(false)
+        self.saveButton.isEnabled = true
     }
     
     private func setViewContent(for view: NSView, with image: NSImage) {
