@@ -11,5 +11,6 @@
 @interface GaussianWrapper : NSObject
 - (void) setPath: (NSString*) path;
 - (void) setBlurLevel: (NSInteger) level;
+- (void) setBlurLevel: (NSInteger) level sigmaX:(NSInteger)sigmaX sigmaY: (NSInteger)sigmaY;
 - (NSImage*) blurredOutput;
 @end

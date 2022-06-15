@@ -708,9 +708,11 @@
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
+                            <visualEffectView blendingMode="withinWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-71-HpY">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            </visualEffectView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
                                 <rect key="frame" x="13" y="223" width="87" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -720,7 +722,7 @@
                                 </connections>
                             </button>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-XM-2x3">
-                                <rect key="frame" x="18" y="17" width="444" height="28"/>
+                                <rect key="frame" x="18" y="14" width="444" height="28"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="Q8W-vy-pTT"/>
                                 <connections>
                                     <action selector="changePhotoBlur:" target="XfG-lQ-9wD" id="GZt-Hd-B0w"/>
@@ -736,30 +738,49 @@
                                     <action selector="saveImage:" target="XfG-lQ-9wD" id="fiu-gW-4zW"/>
                                 </connections>
                             </button>
-                            <progressIndicator fixedFrame="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zdb-yT-yjx">
-                                <rect key="frame" x="224" y="121" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDh-cv-f61">
                                 <rect key="frame" x="90" y="54" width="300" height="162"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nGn-kf-LTV"/>
                             </imageView>
+                            <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zdb-yT-yjx">
+                                <rect key="frame" x="224" y="119" width="32" height="32"/>
+                            </progressIndicator>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vE8-l5-WKB">
+                                <rect key="frame" x="405" y="48" width="55" height="22"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="sUO-LV-BKC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="16:9" id="1Vd-Pb-bmA"/>
                             <constraint firstItem="gDh-cv-f61" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="2dG-kB-PdD"/>
+                            <constraint firstItem="iKT-x0-Q77" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="2ga-Mi-OUC"/>
                             <constraint firstItem="3Yy-Jb-EdM" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="8PH-P9-YXl"/>
+                            <constraint firstItem="vE8-l5-WKB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gDh-cv-f61" secondAttribute="trailing" constant="8" symbolic="YES" id="Bbe-pH-oLS"/>
+                            <constraint firstItem="3LA-XM-2x3" firstAttribute="top" secondItem="vE8-l5-WKB" secondAttribute="bottom" constant="8" symbolic="YES" id="FX3-NO-ty4"/>
+                            <constraint firstItem="aEl-71-HpY" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="JgR-Km-jWL"/>
                             <constraint firstItem="gDh-cv-f61" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="PkQ-oz-BiB"/>
-                            <constraint firstAttribute="bottom" secondItem="3LA-XM-2x3" secondAttribute="bottom" constant="23" id="cfN-QP-Epv"/>
+                            <constraint firstItem="zdb-yT-yjx" firstAttribute="centerY" secondItem="gDh-cv-f61" secondAttribute="centerY" id="Pmr-tK-Jf0"/>
+                            <constraint firstItem="iKT-x0-Q77" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="PqZ-WH-Lwv"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="270" id="dKB-kk-SDa"/>
+                            <constraint firstItem="aEl-71-HpY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="eTG-1q-FwE"/>
                             <constraint firstItem="gDh-cv-f61" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.625" id="f20-tr-CYs"/>
+                            <constraint firstAttribute="trailing" secondItem="vE8-l5-WKB" secondAttribute="trailing" constant="20" symbolic="YES" id="fZk-8B-Hy6"/>
+                            <constraint firstAttribute="bottom" secondItem="3LA-XM-2x3" secondAttribute="bottom" constant="20" symbolic="YES" id="kWL-tf-7c5"/>
+                            <constraint firstItem="zdb-yT-yjx" firstAttribute="centerX" secondItem="gDh-cv-f61" secondAttribute="centerX" id="mXW-4D-1x3"/>
                             <constraint firstAttribute="trailing" secondItem="3LA-XM-2x3" secondAttribute="trailing" constant="20" symbolic="YES" id="ovM-UF-pd6"/>
+                            <constraint firstAttribute="trailing" secondItem="aEl-71-HpY" secondAttribute="trailing" id="xZZ-hR-wUZ"/>
+                            <constraint firstAttribute="bottom" secondItem="aEl-71-HpY" secondAttribute="bottom" id="xzN-FJ-FdN"/>
                             <constraint firstAttribute="trailing" secondItem="3Yy-Jb-EdM" secondAttribute="trailing" constant="25" id="ya8-N8-hG1"/>
                             <constraint firstItem="gDh-cv-f61" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.6" id="z2V-2d-Xxq"/>
                             <constraint firstItem="3LA-XM-2x3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="zqf-tD-Pp1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurLevelLabel" destination="vE8-l5-WKB" id="6YW-Ib-gdi"/>
                         <outlet property="blurLevelSlider" destination="3LA-XM-2x3" id="XgD-wX-zU9"/>
                         <outlet property="imageView" destination="gDh-cv-f61" id="DLm-nh-Wkx"/>
                         <outlet property="openButton" destination="iKT-x0-Q77" id="hgx-bZ-BrQ"/>
@@ -769,7 +790,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="654.5"/>
+            <point key="canvasLocation" x="75" y="654"/>
         </scene>
     </scenes>
     <resources>

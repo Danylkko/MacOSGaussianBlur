@@ -5,11 +5,13 @@
 //  Created by Danylo Litvinchuk on 13.06.2022.
 //
 
+import Cocoa
 import Foundation
+import RxSwift
 
 class ImageProcessor: Operation {
     
-    var imageOutput: ((NSImage) -> Void)?
+    var onImageProcced: ((NSImage) -> Void)?
     private var inputDataURL: URL
     private(set) var blurValue: Int
     private let gaussBlurer: GaussianWrapper
@@ -27,7 +29,9 @@ class ImageProcessor: Operation {
         self.gaussBlurer.setBlurLevel(self.blurValue)
         guard let blurredImage = self.gaussBlurer.blurredOutput() else { return }
         
-        if let imageOutput = self.imageOutput {
+        guard !isCancelled else { return }
+        
+        if let imageOutput = self.onImageProcced {
             DispatchQueue.main.async {
                 imageOutput(blurredImage)
             }
