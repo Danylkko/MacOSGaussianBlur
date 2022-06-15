@@ -36,8 +36,8 @@ class ViewController: NSViewController {
         self.view.wantsLayer = true
         self.gauss = GaussianWrapper()
         self.imageView.wantsLayer = true
-        setupUI()
-        bindUI()
+        self.setupUI()
+        self.bindUI()
     }
     
     //MARK: - IBActions
@@ -48,6 +48,7 @@ class ViewController: NSViewController {
             if result == .OK, let url = openPanel.url {
                 self?.enableSpinner(true)
                 self?.imageURL = url
+                self?.blurLevelSlider.doubleValue = 0.0
                 self?.prepareBackgroundView()
                 self?.prepareImageView()
                 self?.enableSpinner(false)
@@ -82,18 +83,38 @@ class ViewController: NSViewController {
     private func setupUI() {
         self.blurLevelSlider.minValue = 0.0
         self.blurLevelSlider.maxValue = 50
+        self.blurLevelSlider.integerValue = 0
         self.blurLevelSlider.isContinuous = true
         self.saveButton.isEnabled = false
         self.blurLevelSlider.isHidden = true
         self.enableSpinner(false)
     }
     
+    private func bindUI() {
+        sliderValue
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.applyBlurForImage(by: value)
+            })
+            .disposed(by: bag)
+        
+        sliderValue
+            .subscribe { [weak self] value in
+                self?.blurLevelLabel.isHidden = false
+                self?.enableSpinner(true)
+                self?.blurLevelLabel.stringValue =
+                "\(Int(Double(value.element ?? 0) / 50 * 100))%"
+            }
+            .disposed(by: bag)
+    }
+    
     private func prepareImageView() {
         guard let url = self.imageURL else { return }
         self.blurLevelSlider.isHidden = false
         let operation = ImageProcessor(for: url)
-        operation.onImageProcced = { image in
-            self.setViewContent(for: self.imageView, with: image)
+        operation.onImageProcced = { [weak self] image in
+            guard let view = self?.imageView else { return }
+            self?.setViewContent(for: view, with: image)
         }
         self.blurringOperations.addOperation(operation)
     }
@@ -101,8 +122,9 @@ class ViewController: NSViewController {
     private func prepareBackgroundView() {
         guard let url = imageURL else { return }
         let operation = ImageProcessor(for: url, by: self.backgroundBlurLevel)
-        operation.onImageProcced = { image in
-            self.setViewContent(for: self.view, with: image)
+        operation.onImageProcced = { [weak self] image in
+            guard let view = self?.view else { return }
+            self?.setViewContent(for: view, with: image)
         }
         self.blurringOperations.addOperation(operation)
     }
@@ -118,7 +140,8 @@ class ViewController: NSViewController {
         
         let blurOperation = ImageProcessor(for: url, by: value)
         blurOperation.onImageProcced = { [weak self] image in
-            self!.setViewContent(for: self!.imageView, with: image)
+            guard let view = self?.imageView else { return }
+            self!.setViewContent(for: view, with: image)
         }
 
         if let prevOperation = self.prevOperation, !prevOperation.isCancelled {
@@ -141,26 +164,6 @@ class ViewController: NSViewController {
         layer.contentsGravity = view is NSImageView ? .resizeAspect : .resizeAspectFill
         layer.contents = image
         view.layer = layer
-    }
-    
-    private func bindUI() {
-        sliderValue
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] value in
-                self?.applyBlurForImage(by: value)
-            }, onCompleted: {
-                print("completed")
-            })
-            .disposed(by: bag)
-        
-        sliderValue
-            .subscribe { [weak self] value in
-                self?.blurLevelLabel.isHidden = false
-                self?.enableSpinner(true)
-                self?.blurLevelLabel.stringValue =
-                "\(Int(Double(value.element ?? 0) / 50 * 100))%"
-            }
-            .disposed(by: bag)
     }
     
 }
