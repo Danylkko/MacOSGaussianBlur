@@ -26,7 +26,7 @@ class ImageProcessor: Operation {
     }
     
     override func main() {
-        self.gaussBlurer.setBlurLevel(self.blurValue)
+        //self.gaussBlurer.setBlurLevel(self.blurValue)
         self.gaussBlurer.setBlurLevel(self.blurValue, sigmaX: 50, sigmaY: 0)
         guard let blurredImage = self.gaussBlurer.blurredOutput() else { return }
         
