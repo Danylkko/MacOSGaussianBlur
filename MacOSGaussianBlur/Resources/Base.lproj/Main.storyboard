@@ -731,8 +731,8 @@
                                 </connections>
                             </slider>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
-                                <rect key="frame" x="417" y="223" width="45" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <rect key="frame" x="440" y="238" width="15.5" height="17"/>
+                                <buttonCell key="cell" type="bevel" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

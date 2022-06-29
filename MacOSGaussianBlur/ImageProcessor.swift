@@ -11,9 +11,11 @@ import RxSwift
 
 class ImageProcessor: Operation {
     
+    ///Operation's main task
     var onImageProcced: ((NSImage) -> Void)?
     private var inputDataURL: URL
     private(set) var blurValue: Int
+    ///Our core API
     private let gaussBlurer: GaussianWrapper
     
     init(for inputDataURL: URL, by blurValue: Int = 0) {
@@ -25,8 +27,9 @@ class ImageProcessor: Operation {
         super.init()
     }
     
+    ///Entry point for operation when it is putted in the OperationQueue
     override func main() {
-        //self.gaussBlurer.setBlurLevel(self.blurValue)
+        //TODO: - Adjust blur strength 
         self.gaussBlurer.setBlurLevel(self.blurValue * 10, sigmaX: 0, sigmaY: 0)
         guard let blurredImage = self.gaussBlurer.blurredOutput() else { return }
         

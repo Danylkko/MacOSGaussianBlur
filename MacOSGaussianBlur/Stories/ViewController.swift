@@ -41,6 +41,8 @@ class ViewController: NSViewController {
     }
     
     //MARK: - IBActions
+    
+    ///Opens image for a specified path
     @IBAction func openImage(_ sender: Any) {
         let openPanel = NSOpenPanel()
         
@@ -57,6 +59,7 @@ class ViewController: NSViewController {
         }
     }
     
+    ///Saves an image
     @IBAction func saveImage(_ sender: Any) {
         let savePanel = NSSavePanel()
         savePanel.showsResizeIndicator = true
@@ -76,11 +79,14 @@ class ViewController: NSViewController {
         }
     }
     
+    /// Slider's value changes cause blur strength changes
     @IBAction func changePhotoBlur(_ sender: NSSlider) {
         sliderValue.onNext(sender.integerValue)
     }
     
     //MARK: - Setup
+    
+    ///Prepares UI
     private func setupUI() {
         self.blurLevelSlider.minValue = 0.0
         self.blurLevelSlider.maxValue = 100.0
@@ -91,6 +97,7 @@ class ViewController: NSViewController {
         self.enableSpinner(false)
     }
     
+    /// Binds UI (Reactive manner)
     private func bindUI() {
         sliderValue
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
@@ -109,6 +116,7 @@ class ViewController: NSViewController {
             .disposed(by: bag)
     }
     
+    ///Puts image blurring operation to a queue
     private func prepareImageView() {
         guard let url = self.imageURL else { return }
         self.blurLevelSlider.isHidden = false
@@ -120,6 +128,7 @@ class ViewController: NSViewController {
         self.blurringOperations.addOperation(operation)
     }
     
+    ///Puts background blurring operation to a queue
     private func prepareBackgroundView() {
         guard let url = imageURL else { return }
         let operation = ImageProcessor(for: url, by: self.backgroundBlurLevel)
@@ -131,11 +140,14 @@ class ViewController: NSViewController {
     }
     
     //MARK: - Supporting methods
+    
+    ///Hides and shows a spinner
     private func enableSpinner(_ status: Bool) {
         self.progressIndicator.isHidden = !status
         status ? self.progressIndicator.startAnimation(nil) : self.progressIndicator.stopAnimation(nil)
     }
     
+    ///Applies blur for an image
     private func applyBlurForImage(by value: Int) {
         guard let url = self.imageURL else { return }
         
@@ -164,6 +176,7 @@ class ViewController: NSViewController {
         self.blurringOperations.addOperation(blurOperation)
     }
     
+    ///Sets an image for exact view
     private func setViewContent(for view: NSView, with image: NSImage) {
         let layer = CALayer()
         layer.contentsGravity = view is NSImageView ? .resizeAspect : .resizeAspectFill
