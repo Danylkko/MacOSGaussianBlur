@@ -712,10 +712,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             </visualEffectView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
-                                <rect key="frame" x="13" y="223" width="87" height="32"/>
-                                <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb">
+                                <rect key="frame" x="20" y="234" width="55" height="16"/>
+                                <buttonCell key="cell" type="bevel" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent">o</string>
+                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="openImage:" target="XfG-lQ-9wD" id="jth-Ot-Cwl"/>
@@ -730,7 +732,7 @@
                             </slider>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
                                 <rect key="frame" x="417" y="223" width="45" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb">
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

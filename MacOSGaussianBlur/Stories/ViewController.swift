@@ -49,6 +49,7 @@ class ViewController: NSViewController {
                 self?.enableSpinner(true)
                 self?.imageURL = url
                 self?.blurLevelSlider.doubleValue = 0.0
+                self?.blurringOperations.cancelAllOperations()
                 self?.prepareBackgroundView()
                 self?.prepareImageView()
                 self?.enableSpinner(false)
@@ -82,7 +83,7 @@ class ViewController: NSViewController {
     //MARK: - Setup
     private func setupUI() {
         self.blurLevelSlider.minValue = 0.0
-        self.blurLevelSlider.maxValue = 50
+        self.blurLevelSlider.maxValue = 100.0
         self.blurLevelSlider.integerValue = 0
         self.blurLevelSlider.isContinuous = true
         self.saveButton.isEnabled = false
@@ -103,7 +104,7 @@ class ViewController: NSViewController {
                 self?.blurLevelLabel.isHidden = false
                 self?.enableSpinner(true)
                 self?.blurLevelLabel.stringValue =
-                "\(Int(Double(value.element ?? 0) / 50 * 100))%"
+                "\(Int(value.element ?? 0))%"
             }
             .disposed(by: bag)
     }
@@ -143,6 +144,14 @@ class ViewController: NSViewController {
             guard let view = self?.imageView else { return }
             self!.setViewContent(for: view, with: image)
         }
+        
+        blurOperation.completionBlock = {[weak self] in
+            DispatchQueue.main.async {
+                self?.enableSpinner(false)
+                self?.blurLevelLabel.isHidden = true
+                self?.saveButton.isEnabled = true
+            }
+        }
 
         if let prevOperation = self.prevOperation, !prevOperation.isCancelled {
             self.prevOperation = blurOperation
@@ -152,11 +161,7 @@ class ViewController: NSViewController {
         }
         
         self.blurringOperations.cancelAllOperations()
-        
         self.blurringOperations.addOperation(blurOperation)
-        
-        self.enableSpinner(false)
-        self.saveButton.isEnabled = true
     }
     
     private func setViewContent(for view: NSView, with image: NSImage) {
