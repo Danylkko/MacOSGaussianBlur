@@ -7,31 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9752C14B28579B9B00FD8D1B /* libGaussianBlur_d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9752C14A28579B9B00FD8D1B /* libGaussianBlur_d.dylib */; };
-		9752C14C28579B9B00FD8D1B /* libGaussianBlur_d.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9752C14A28579B9B00FD8D1B /* libGaussianBlur_d.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9752C2162857CB4600FD8D1B /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752C2152857CB4600FD8D1B /* ImageProcessor.swift */; };
 		978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0C32854F709003F0FA6 /* AppDelegate.swift */; };
 		978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0C52854F709003F0FA6 /* ViewController.swift */; };
 		978AF0C82854F70B003F0FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 978AF0C72854F70B003F0FA6 /* Assets.xcassets */; };
 		978AF0CB2854F70C003F0FA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 978AF0C92854F70C003F0FA6 /* Main.storyboard */; };
 		978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */; };
-		97FDCF4C285623A700BAD9A7 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */; };
+		97AAEAE4286E2A1D003BE378 /* MyNSTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AAEAE3286E2A1D003BE378 /* MyNSTextFieldCell.swift */; };
+		97FDCF4C285623A700BAD9A7 /* MyNSButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDCF4B285623A700BAD9A7 /* MyNSButtonCell.swift */; };
 		D93F206A96901B647AC4F183 /* Pods_MacOSGaussianBlur.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB6A3B78A94785FBE92C401 /* Pods_MacOSGaussianBlur.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9752C14D28579B9B00FD8D1B /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9752C14C28579B9B00FD8D1B /* libGaussianBlur_d.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B0A5CDB015A33A3DD78071A /* Pods-MacOSGaussianBlur.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOSGaussianBlur.release.xcconfig"; path = "Target Support Files/Pods-MacOSGaussianBlur/Pods-MacOSGaussianBlur.release.xcconfig"; sourceTree = "<group>"; };
@@ -48,7 +33,8 @@
 		978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacOSGaussianBlur-Bridging-Header.h"; sourceTree = "<group>"; };
 		978AF0D82854FB7B003F0FA6 /* GaussianWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaussianWrapper.h; sourceTree = "<group>"; };
 		978AF0D92854FB7B003F0FA6 /* GaussianWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GaussianWrapper.mm; sourceTree = "<group>"; };
-		97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		97AAEAE3286E2A1D003BE378 /* MyNSTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyNSTextFieldCell.swift; path = "MacOSGaussianBlur/Custom elements/MyNSTextFieldCell.swift"; sourceTree = SOURCE_ROOT; };
+		97FDCF4B285623A700BAD9A7 /* MyNSButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNSButtonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9752C14B28579B9B00FD8D1B /* libGaussianBlur_d.dylib in Frameworks */,
 				D93F206A96901B647AC4F183 /* Pods_MacOSGaussianBlur.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,7 +55,6 @@
 				1F73CFA9ECA30C8312BABFC1 /* Pods-MacOSGaussianBlur.debug.xcconfig */,
 				0B0A5CDB015A33A3DD78071A /* Pods-MacOSGaussianBlur.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -121,16 +105,33 @@
 		978AF0C22854F709003F0FA6 /* MacOSGaussianBlur */ = {
 			isa = PBXGroup;
 			children = (
+				97AAEAE6286E31C1003BE378 /* Operations */,
+				97AAEAE5286E318F003BE378 /* Custom elements */,
 				9752C2182857CB8500FD8D1B /* Stories */,
 				9752C2172857CB6F00FD8D1B /* Resources */,
 				97FDCF4A2856090900BAD9A7 /* ExternalLibWrapper */,
 				978AF0C32854F709003F0FA6 /* AppDelegate.swift */,
 				978AF0CC2854F70C003F0FA6 /* MacOSGaussianBlur.entitlements */,
 				978AF0D72854FB7B003F0FA6 /* MacOSGaussianBlur-Bridging-Header.h */,
-				97FDCF4B285623A700BAD9A7 /* MyCustomCell.swift */,
-				9752C2152857CB4600FD8D1B /* ImageProcessor.swift */,
 			);
 			path = MacOSGaussianBlur;
+			sourceTree = "<group>";
+		};
+		97AAEAE5286E318F003BE378 /* Custom elements */ = {
+			isa = PBXGroup;
+			children = (
+				97FDCF4B285623A700BAD9A7 /* MyNSButtonCell.swift */,
+				97AAEAE3286E2A1D003BE378 /* MyNSTextFieldCell.swift */,
+			);
+			path = "Custom elements";
+			sourceTree = "<group>";
+		};
+		97AAEAE6286E31C1003BE378 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				9752C2152857CB4600FD8D1B /* ImageProcessor.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		97FDCF4A2856090900BAD9A7 /* ExternalLibWrapper */ = {
@@ -153,7 +154,6 @@
 				978AF0BC2854F709003F0FA6 /* Sources */,
 				978AF0BD2854F709003F0FA6 /* Frameworks */,
 				978AF0BE2854F709003F0FA6 /* Resources */,
-				9752C14D28579B9B00FD8D1B /* Embed Libraries */,
 				EE53380F4BC962C8B9ABDFF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -260,8 +260,9 @@
 			files = (
 				978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */,
 				978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */,
+				97AAEAE4286E2A1D003BE378 /* MyNSTextFieldCell.swift in Sources */,
 				9752C2162857CB4600FD8D1B /* ImageProcessor.swift in Sources */,
-				97FDCF4C285623A700BAD9A7 /* MyCustomCell.swift in Sources */,
+				97FDCF4C285623A700BAD9A7 /* MyNSButtonCell.swift in Sources */,
 				978AF0DA2854FB7B003F0FA6 /* GaussianWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

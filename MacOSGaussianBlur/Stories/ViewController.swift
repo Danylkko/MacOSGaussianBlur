@@ -100,7 +100,7 @@ class ViewController: NSViewController {
     /// Binds UI (Reactive manner)
     private func bindUI() {
         sliderValue
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
                 self?.applyBlurForImage(by: value)
             })

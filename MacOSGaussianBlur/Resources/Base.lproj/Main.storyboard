@@ -713,12 +713,13 @@
                             </visualEffectView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
                                 <rect key="frame" x="20" y="234" width="55" height="16"/>
-                                <buttonCell key="cell" type="bevel" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <buttonCell key="cell" type="bevel" title="Open" bezelStyle="rounded" image="folder.fill" catalog="system" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="dds-Eh-vkb" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent">o</string>
                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
+                                <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="openImage:" target="XfG-lQ-9wD" id="jth-Ot-Cwl"/>
                                 </connections>
@@ -732,10 +733,11 @@
                             </slider>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
                                 <rect key="frame" x="440" y="238" width="15.5" height="17"/>
-                                <buttonCell key="cell" type="bevel" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb" customClass="MyCustomCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <buttonCell key="cell" type="bevel" title="Save" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="xSb-jI-Ydb" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="saveImage:" target="XfG-lQ-9wD" id="fiu-gW-4zW"/>
                                 </connections>
@@ -749,7 +751,7 @@
                             </progressIndicator>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vE8-l5-WKB">
                                 <rect key="frame" x="405" y="48" width="55" height="22"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="sUO-LV-BKC">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" borderStyle="bezel" title="Label" bezelStyle="round" id="sUO-LV-BKC" customClass="MyNSTextFieldCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -773,6 +775,7 @@
                             <constraint firstAttribute="trailing" secondItem="vE8-l5-WKB" secondAttribute="trailing" constant="20" symbolic="YES" id="fZk-8B-Hy6"/>
                             <constraint firstAttribute="bottom" secondItem="3LA-XM-2x3" secondAttribute="bottom" constant="20" symbolic="YES" id="kWL-tf-7c5"/>
                             <constraint firstItem="zdb-yT-yjx" firstAttribute="centerX" secondItem="gDh-cv-f61" secondAttribute="centerX" id="mXW-4D-1x3"/>
+                            <constraint firstItem="3Yy-Jb-EdM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iKT-x0-Q77" secondAttribute="trailing" constant="8" symbolic="YES" id="nNi-IK-dGe"/>
                             <constraint firstAttribute="trailing" secondItem="3LA-XM-2x3" secondAttribute="trailing" constant="20" symbolic="YES" id="ovM-UF-pd6"/>
                             <constraint firstAttribute="trailing" secondItem="aEl-71-HpY" secondAttribute="trailing" id="xZZ-hR-wUZ"/>
                             <constraint firstAttribute="bottom" secondItem="aEl-71-HpY" secondAttribute="bottom" id="xzN-FJ-FdN"/>
