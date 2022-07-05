@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MenuController" customModule="MacOSGaussianBlur" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="116" height="150"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-i9-pVc">
+                    <rect key="frame" x="20" y="13" width="76" height="124"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HCA-BG-7cs">
+                            <rect key="frame" x="24" y="97" width="59" height="32"/>
+                            <buttonCell key="cell" type="push" title="Blur" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1H5-Zd-oDC" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="applyFilter:" target="-2" id="Gj8-Zx-EXi"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pbj-Sr-IUW">
+                            <rect key="frame" x="15" y="71" width="68" height="32"/>
+                            <buttonCell key="cell" type="push" title="Sepia" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aKr-Ou-fJU" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="applyFilter:" target="-2" id="KEo-LV-rHU"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rfg-HN-MOb">
+                            <rect key="frame" x="-7" y="45" width="90" height="32"/>
+                            <buttonCell key="cell" type="push" title="Duo tone" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BrV-8T-8ZX" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="applyFilter:" target="-2" id="EnU-Km-oXX"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUQ-DI-jci">
+                            <rect key="frame" x="12" y="19" width="71" height="32"/>
+                            <buttonCell key="cell" type="push" title="Pencil" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hod-R2-4dU" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="applyFilter:" target="-2" id="fNy-CV-qIQ"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8mT-I2-j5X">
+                            <rect key="frame" x="0.0" y="-7" width="83" height="32"/>
+                            <buttonCell key="cell" type="push" title="Cartoon" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Ro-V8-PXZ" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="applyFilter:" target="-2" id="aFE-QG-GXb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wdL-i9-pVc" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="13" id="6GR-T3-tWt"/>
+                <constraint firstAttribute="bottom" secondItem="wdL-i9-pVc" secondAttribute="bottom" constant="13" id="G9g-1Q-Bne"/>
+                <constraint firstItem="wdL-i9-pVc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="ikq-R3-iet"/>
+                <constraint firstAttribute="trailing" secondItem="wdL-i9-pVc" secondAttribute="trailing" constant="20" symbolic="YES" id="lDG-Qr-4rn"/>
+            </constraints>
+            <point key="canvasLocation" x="-63.5" y="121.5"/>
+        </customView>
+    </objects>
+</document>

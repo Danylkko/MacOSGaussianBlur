@@ -18,30 +18,54 @@ class ViewController: NSViewController {
     @IBOutlet private weak var blurLevelSlider: NSSlider!
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var blurLevelLabel: NSTextField!
+    @IBOutlet private weak var showMenuButton: NSButton!
     
     //MARK: - Other properties
+    private var filterMenuController = MenuController()
+    private var trailingConstraint: NSLayoutConstraint?
+    
     private var imageURL: URL?
     private var gauss: GaussianWrapper?
     private let blurringOperations = OperationQueue()
     private var prevOperation: ImageProcessor?
     
     private var bag = DisposeBag()
-    private var sliderValue = PublishSubject<Int>()
+    
+    private var isOpenMenu = false
     
     //MARK: - Setup values
     private let backgroundBlurLevel = 25
+    private var currentFilter: FilterButtonType = .blur
     
     //MARK: - Delegate methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.wantsLayer = true
-        self.gauss = GaussianWrapper()
+        self.gauss = GaussianWrapper(FilterButtonType.blur.rawValue)
         self.imageView.wantsLayer = true
         self.setupUI()
         self.bindUI()
+        self.filterMenuController.delegate = self
+        makeConstraints()
+    }
+    
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        
     }
     
     //MARK: - IBActions
+    @IBAction func showMenu(_ sender: NSButton){
+        self.isOpenMenu.toggle()
+        
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 1
+            self.trailingConstraint?.animator().constant = isOpenMenu ? 0 : self.filterMenuController.view.frame.width
+            self.view.layoutSubtreeIfNeeded()
+        }
+    }
     
     ///Opens image for a specified path
     @IBAction func openImage(_ sender: Any) {
@@ -79,11 +103,6 @@ class ViewController: NSViewController {
             }
         }
     }
-    
-    /// Slider's value changes cause blur strength changes
-//    @IBAction func changePhotoBlur(_ sender: NSSlider) {
-//        sliderValue.onNext(sender.integerValue)
-//    }
     
     //MARK: - Setup
     
@@ -123,7 +142,7 @@ class ViewController: NSViewController {
     private func prepareImageView() {
         guard let url = self.imageURL else { return }
         self.blurLevelSlider.isHidden = false
-        let operation = ImageProcessor(for: url)
+        let operation = ImageProcessor(for: url, type: self.currentFilter)
         operation.onImageProcced = { [weak self] image in
             guard let view = self?.imageView else { return }
             self?.setViewContent(for: view, with: image)
@@ -134,7 +153,7 @@ class ViewController: NSViewController {
     ///Puts background blurring operation to a queue
     private func prepareBackgroundView() {
         guard let url = imageURL else { return }
-        let operation = ImageProcessor(for: url, by: self.backgroundBlurLevel)
+        let operation = ImageProcessor(for: url, by: self.backgroundBlurLevel, type: .blur)
         operation.onImageProcced = { [weak self] image in
             guard let view = self?.view else { return }
             self?.setViewContent(for: view, with: image)
@@ -154,7 +173,7 @@ class ViewController: NSViewController {
     private func applyBlurForImage(by value: Int) {
         guard let url = self.imageURL else { return }
         
-        let blurOperation = ImageProcessor(for: url, by: value)
+        let blurOperation = ImageProcessor(for: url, by: value, type: self.currentFilter)
         blurOperation.onImageProcced = { [weak self] image in
             guard let view = self?.imageView else { return }
             self!.setViewContent(for: view, with: image)
@@ -167,7 +186,7 @@ class ViewController: NSViewController {
                 self?.saveButton.isEnabled = true
             }
         }
-
+        
         if let prevOperation = self.prevOperation, !prevOperation.isCancelled {
             self.prevOperation = blurOperation
             if blurOperation.blurValue == prevOperation.blurValue {
@@ -187,4 +206,34 @@ class ViewController: NSViewController {
         view.layer = layer
     }
     
+}
+
+extension  ViewController {
+    
+    private func makeConstraints() {
+        view.addSubview(filterMenuController.view)
+        
+        self.trailingConstraint = filterMenuController.view.rightAnchor.constraint(equalTo: view.rightAnchor, constant: self.filterMenuController.view.frame.width)
+        if let constraint = self.trailingConstraint {
+            NSLayoutConstraint.activate([ constraint,
+                                          filterMenuController.view.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+        }
+        
+        self.addChild(filterMenuController)
+    }
+}
+
+
+
+extension ViewController: FilterMenuDelegate {
+    func tappedFilterButton(filter: FilterButtonType) {
+        self.currentFilter = filter
+        self.enableSpinner(true)
+        self.gauss = GaussianWrapper(filter.rawValue)
+        self.blurLevelSlider.doubleValue = 0.0
+        self.blurringOperations.cancelAllOperations()
+        self.prepareBackgroundView()
+        self.prepareImageView()
+        self.enableSpinner(false)
+    }
 }

@@ -11,6 +11,9 @@
 #import "CartoonLib.h"
 #import "SepiaLib.h"
 #import "DuoToneLib.h"
+#import "PencilLib.h"
+
+#include "typeinfo"
 
 
 @interface GaussianWrapper()
@@ -19,11 +22,23 @@
 
 @implementation GaussianWrapper
 
-- (instancetype)init {
+- (instancetype)init: (NSString*) name {
     self = [super init];
     
     if (self != nil) {
-        _gcb = new GaussianCurveBlur();
+        _filterType = name;
+        if ([_filterType isEqual: @"Blur"]) {
+            _gcb = new GaussianCurveBlur();
+        } else if ([_filterType isEqual: @"Sepia"]) {
+            _gcb = new SepiaFilter();
+        } else if ([_filterType isEqual: @"Duo tone"]) {
+            NSUInteger r = arc4random_uniform(3);
+            _gcb = new DuoToneFilter(Tone(r));
+        } else if ([_filterType isEqual: @"Pencil"]) {
+            _gcb = new PencilFilter();
+        } else if ([_filterType isEqual: @"Cartoon"]) {
+            _gcb = new CartoonFilter();
+        }
     }
     
     return self;
@@ -34,11 +49,12 @@
 }
 
 - (void)setBlurLevel: (NSInteger)level {
-    _gcb->setFilterLevel((int) level);
-}
-
-- (void)setBlurLevel:(NSInteger)level sigmaX:(NSInteger)sigmaX sigmaY:(NSInteger)sigmaY {
-//    ((GaussianCurveBlur *)_gcb)->setEffectLevel((int)level, sigmaX, sigmaY);
+    if (_gcb->_typeName == "gauss")
+        ((GaussianCurveBlur *)_gcb)->setEffectLevel((int) level * 10, 0, 0);
+    else if (_gcb->_typeName == "duo")
+        _gcb->setFilterLevel((int) level / 10);
+    else if (_gcb->_typeName == "pen")
+        _gcb->setFilterLevel((int) level * 2);
 }
 
 - (NSImage *)blurredOutput {

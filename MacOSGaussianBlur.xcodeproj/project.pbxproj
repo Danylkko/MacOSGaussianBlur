@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9721597D28749E4400F8FF3B /* libGaussianBlur.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9721597C28749E4400F8FF3B /* libGaussianBlur.dylib */; };
 		9721597E28749E4400F8FF3B /* libGaussianBlur.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 9721597C28749E4400F8FF3B /* libGaussianBlur.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		972159852874ABBE00F8FF3B /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972159832874ABBE00F8FF3B /* MenuController.swift */; };
+		972159862874ABBE00F8FF3B /* MenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 972159842874ABBE00F8FF3B /* MenuController.xib */; };
 		9752C2162857CB4600FD8D1B /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752C2152857CB4600FD8D1B /* ImageProcessor.swift */; };
 		978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0C32854F709003F0FA6 /* AppDelegate.swift */; };
 		978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978AF0C52854F709003F0FA6 /* ViewController.swift */; };
@@ -39,6 +41,8 @@
 		1F73CFA9ECA30C8312BABFC1 /* Pods-MacOSGaussianBlur.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacOSGaussianBlur.debug.xcconfig"; path = "Target Support Files/Pods-MacOSGaussianBlur/Pods-MacOSGaussianBlur.debug.xcconfig"; sourceTree = "<group>"; };
 		5EB6A3B78A94785FBE92C401 /* Pods_MacOSGaussianBlur.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacOSGaussianBlur.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9721597C28749E4400F8FF3B /* libGaussianBlur.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGaussianBlur.dylib; path = "photo-processing/build/lib/libGaussianBlur.dylib"; sourceTree = "<group>"; };
+		972159832874ABBE00F8FF3B /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		972159842874ABBE00F8FF3B /* MenuController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuController.xib; sourceTree = "<group>"; };
 		9752C2152857CB4600FD8D1B /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		978AF0C02854F709003F0FA6 /* MacOSGaussianBlur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacOSGaussianBlur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		978AF0C32854F709003F0FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		9752C2172857CB6F00FD8D1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				972159842874ABBE00F8FF3B /* MenuController.xib */,
 				978AF0C92854F70C003F0FA6 /* Main.storyboard */,
 				978AF0C72854F70B003F0FA6 /* Assets.xcassets */,
 			);
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				978AF0C52854F709003F0FA6 /* ViewController.swift */,
+				972159832874ABBE00F8FF3B /* MenuController.swift */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972159862874ABBE00F8FF3B /* MenuController.xib in Resources */,
 				978AF0C82854F70B003F0FA6 /* Assets.xcassets in Resources */,
 				978AF0CB2854F70C003F0FA6 /* Main.storyboard in Resources */,
 			);
@@ -276,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				972159852874ABBE00F8FF3B /* MenuController.swift in Sources */,
 				978AF0C62854F709003F0FA6 /* ViewController.swift in Sources */,
 				978AF0C42854F709003F0FA6 /* AppDelegate.swift in Sources */,
 				97AAEAE4286E2A1D003BE378 /* MyNSTextFieldCell.swift in Sources */,

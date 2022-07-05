@@ -18,10 +18,10 @@ class ImageProcessor: Operation {
     ///Our core API
     private let gaussBlurer: GaussianWrapper
     
-    init(for inputDataURL: URL, by blurValue: Int = 0) {
+    init(for inputDataURL: URL, by blurValue: Int = 0, type: FilterButtonType = .blur) {
         self.inputDataURL = inputDataURL
         self.blurValue = blurValue
-        self.gaussBlurer = GaussianWrapper()
+        self.gaussBlurer = GaussianWrapper(type.rawValue)
         self.gaussBlurer.setPath(inputDataURL.path)
         self.gaussBlurer.setBlurLevel(0)
         super.init()
@@ -30,7 +30,7 @@ class ImageProcessor: Operation {
     ///Entry point for operation when it is putted in the OperationQueue
     override func main() {
         //TODO: - Adjust blur strength 
-        self.gaussBlurer.setBlurLevel(self.blurValue * 10, sigmaX: 0, sigmaY: 0)
+        self.gaussBlurer.setBlurLevel(self.blurValue)
         guard let blurredImage = self.gaussBlurer.blurredOutput() else { return }
         
         guard !isCancelled else { return }

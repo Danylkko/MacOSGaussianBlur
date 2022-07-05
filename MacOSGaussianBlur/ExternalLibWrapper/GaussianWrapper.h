@@ -9,8 +9,12 @@
 #import <AppKit/AppKit.h>
 
 @interface GaussianWrapper : NSObject
+
+@property NSString* filterType;
+
+- (instancetype) init: (NSString*) name;
 - (void) setPath: (NSString*) path;
 - (void) setBlurLevel: (NSInteger) level;
-- (void) setBlurLevel: (NSInteger) level sigmaX:(NSInteger)sigmaX sigmaY: (NSInteger)sigmaY;
+//- (void) setBlurLevel: (NSInteger) level sigmaX:(NSInteger)sigmaX sigmaY: (NSInteger)sigmaY;
 - (NSImage*) blurredOutput;
 @end

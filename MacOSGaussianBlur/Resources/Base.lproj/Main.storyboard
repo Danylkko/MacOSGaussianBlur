@@ -710,6 +710,22 @@
                         <subviews>
                             <visualEffectView blendingMode="withinWindow" material="dark" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-71-HpY">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <subviews>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F8l-7J-mHx">
+                                        <rect key="frame" x="404" y="240" width="16" height="12"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="list.bullet" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XoP-lX-BhB" customClass="MyNSButtonCell" customModule="MacOSGaussianBlur" customModuleProvider="target">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <action selector="showMenu:" target="XfG-lQ-9wD" id="3NS-Xp-r00"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="F8l-7J-mHx" firstAttribute="top" secondItem="aEl-71-HpY" secondAttribute="top" constant="20" symbolic="YES" id="esI-LY-0nM"/>
+                                </constraints>
                             </visualEffectView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iKT-x0-Q77">
                                 <rect key="frame" x="20" y="234" width="55" height="16"/>
@@ -774,6 +790,7 @@
                             <constraint firstItem="zdb-yT-yjx" firstAttribute="centerX" secondItem="gDh-cv-f61" secondAttribute="centerX" id="mXW-4D-1x3"/>
                             <constraint firstItem="3Yy-Jb-EdM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iKT-x0-Q77" secondAttribute="trailing" constant="8" symbolic="YES" id="nNi-IK-dGe"/>
                             <constraint firstAttribute="trailing" secondItem="3LA-XM-2x3" secondAttribute="trailing" constant="20" symbolic="YES" id="ovM-UF-pd6"/>
+                            <constraint firstItem="3Yy-Jb-EdM" firstAttribute="leading" secondItem="F8l-7J-mHx" secondAttribute="trailing" constant="20" id="vs7-OD-f04"/>
                             <constraint firstAttribute="trailing" secondItem="aEl-71-HpY" secondAttribute="trailing" id="xZZ-hR-wUZ"/>
                             <constraint firstAttribute="bottom" secondItem="aEl-71-HpY" secondAttribute="bottom" id="xzN-FJ-FdN"/>
                             <constraint firstAttribute="trailing" secondItem="3Yy-Jb-EdM" secondAttribute="trailing" constant="25" id="ya8-N8-hG1"/>
@@ -788,6 +805,7 @@
                         <outlet property="openButton" destination="iKT-x0-Q77" id="hgx-bZ-BrQ"/>
                         <outlet property="progressIndicator" destination="zdb-yT-yjx" id="HcZ-41-3Ou"/>
                         <outlet property="saveButton" destination="3Yy-Jb-EdM" id="ENV-sB-2JC"/>
+                        <outlet property="showMenuButton" destination="F8l-7J-mHx" id="c3z-GC-GxZ"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -798,5 +816,6 @@
     <resources>
         <image name="NSShareTemplate" width="15" height="17"/>
         <image name="folder.fill" catalog="system" width="18" height="14"/>
+        <image name="list.bullet" catalog="system" width="16" height="12"/>
     </resources>
 </document>
