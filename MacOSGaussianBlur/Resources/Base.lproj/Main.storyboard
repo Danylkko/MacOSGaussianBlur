@@ -727,9 +727,6 @@
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-XM-2x3">
                                 <rect key="frame" x="18" y="14" width="444" height="28"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="Q8W-vy-pTT"/>
-                                <connections>
-                                    <action selector="changePhotoBlur:" target="XfG-lQ-9wD" id="GZt-Hd-B0w"/>
-                                </connections>
                             </slider>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-Jb-EdM">
                                 <rect key="frame" x="440" y="238" width="15.5" height="17"/>

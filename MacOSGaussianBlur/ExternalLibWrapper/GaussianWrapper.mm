@@ -7,9 +7,14 @@
 
 #import "GaussianWrapper.h"
 #import "BlurLib.h"
+#import "IFilter.h"
+#import "CartoonLib.h"
+#import "SepiaLib.h"
+#import "DuoToneLib.h"
+
 
 @interface GaussianWrapper()
-@property GaussianCurveBlur* gcb;
+@property IFilter* gcb;
 @end
 
 @implementation GaussianWrapper
@@ -29,21 +34,21 @@
 }
 
 - (void)setBlurLevel: (NSInteger)level {
-    _gcb->setBlurLevel((int) level);
+    _gcb->setFilterLevel((int) level);
 }
 
 - (void)setBlurLevel:(NSInteger)level sigmaX:(NSInteger)sigmaX sigmaY:(NSInteger)sigmaY {
-    _gcb->setBlurLevel((int)level, sigmaX, sigmaY);
+//    ((GaussianCurveBlur *)_gcb)->setEffectLevel((int)level, sigmaX, sigmaY);
 }
 
 - (NSImage *)blurredOutput {
-    const unsigned char * blurredData = _gcb->blurredOutput();
-    const int bytesPerRow = _gcb->blurredMatCols() * GaussianCurveBlur::channels;
+    const unsigned char * blurredData = _gcb->processedOutput();
+    const int bytesPerRow = _gcb->getImageCols() * GaussianCurveBlur::channels;
     
     NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc]
                                 initWithBitmapDataPlanes:(unsigned char **)&blurredData
-                                pixelsWide:_gcb->blurredMatCols()
-                                pixelsHigh:_gcb->blurredMatRows()
+                                pixelsWide:_gcb->getImageCols()
+                                pixelsHigh:_gcb->getImageRows()
                                 bitsPerSample:8
                                 samplesPerPixel:GaussianCurveBlur::channels
                                 hasAlpha:NO

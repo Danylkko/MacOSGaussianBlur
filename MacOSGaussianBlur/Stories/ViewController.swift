@@ -7,6 +7,7 @@
 
 import Cocoa
 import RxSwift
+import RxCocoa
 
 class ViewController: NSViewController {
     
@@ -80,9 +81,9 @@ class ViewController: NSViewController {
     }
     
     /// Slider's value changes cause blur strength changes
-    @IBAction func changePhotoBlur(_ sender: NSSlider) {
-        sliderValue.onNext(sender.integerValue)
-    }
+//    @IBAction func changePhotoBlur(_ sender: NSSlider) {
+//        sliderValue.onNext(sender.integerValue)
+//    }
     
     //MARK: - Setup
     
@@ -99,14 +100,16 @@ class ViewController: NSViewController {
     
     /// Binds UI (Reactive manner)
     private func bindUI() {
-        sliderValue
+        let blurSlider = blurLevelSlider.rx.value.changed.share()
+        
+        blurSlider
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
-                self?.applyBlurForImage(by: value)
+                self?.applyBlurForImage(by: Int(value))
             })
             .disposed(by: bag)
         
-        sliderValue
+        blurSlider
             .subscribe { [weak self] value in
                 self?.blurLevelLabel.isHidden = false
                 self?.enableSpinner(true)
