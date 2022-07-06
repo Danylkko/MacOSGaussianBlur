@@ -141,7 +141,7 @@ class ViewController: NSViewController {
     ///Puts image blurring operation to a queue
     private func prepareImageView() {
         guard let url = self.imageURL else { return }
-        self.blurLevelSlider.isHidden = false
+        self.blurLevelSlider.isHidden = self.isSliderEnabled(filter: self.currentFilter)
         let operation = ImageProcessor(for: url, type: self.currentFilter)
         operation.onImageProcced = { [weak self] image in
             guard let view = self?.imageView else { return }
@@ -167,6 +167,15 @@ class ViewController: NSViewController {
     private func enableSpinner(_ status: Bool) {
         self.progressIndicator.isHidden = !status
         status ? self.progressIndicator.startAnimation(nil) : self.progressIndicator.stopAnimation(nil)
+    }
+    
+    private func isSliderEnabled(filter: FilterButtonType) -> Bool {
+        switch filter {
+        case .blur, .pencil, .duoTone:
+            return false
+        case .sepia, .cartoon:
+            return true
+        }
     }
     
     ///Applies blur for an image
@@ -231,6 +240,7 @@ extension ViewController: FilterMenuDelegate {
         self.enableSpinner(true)
         self.gauss = GaussianWrapper(filter.rawValue)
         self.blurLevelSlider.doubleValue = 0.0
+        self.blurLevelSlider.isHidden = self.isSliderEnabled(filter: filter)
         self.blurringOperations.cancelAllOperations()
         self.prepareBackgroundView()
         self.prepareImageView()
